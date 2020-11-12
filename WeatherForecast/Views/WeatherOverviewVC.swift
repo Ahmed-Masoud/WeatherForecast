@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherOverviewVC: UIViewController {
     
@@ -13,13 +14,13 @@ class WeatherOverviewVC: UIViewController {
     
     //MARK:- Properties
     private var viewModel: WeatherOverviewViewModelProtocol?
+    private let locationManager = CLLocationManager()
     
     //MARK:-LifeCycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBinding()
-        viewModel?.loadDate(lat: 31.219119, lng: 29.957723)
+        setupLocation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +50,21 @@ class WeatherOverviewVC: UIViewController {
         LoadingSpinnerManager.shared.hide()
         print(error)
     }
+    
+    private func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
 
 }
 
+extension WeatherOverviewVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !locations.isEmpty {
+            guard let currentLocation = locations.first else { return }
+            locationManager.stopUpdatingLocation()
+            viewModel?.loadDate(lat: currentLocation.coordinate.latitude, lng: currentLocation.coordinate.longitude)
+        }
+    }
+}
