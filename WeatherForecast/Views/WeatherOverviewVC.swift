@@ -19,7 +19,7 @@ class WeatherOverviewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBinding()
-        viewModel?.loadDate(lat: 37.33233141, lng: -122.0312186)
+        viewModel?.loadDate(lat: 31.219119, lng: 29.957723)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +42,7 @@ class WeatherOverviewVC: UIViewController {
     
     private func didFetchData() {
         LoadingSpinnerManager.shared.hide()
+        print(viewModel?.currentWeather?.feelsLike)
     }
     
     private func didFail(_ error: String) {

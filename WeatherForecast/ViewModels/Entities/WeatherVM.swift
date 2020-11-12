@@ -25,7 +25,7 @@ class WeatherVM: WeatherVMProtocol {
     
     private var weather: WeatherModel?
     
-    init(weather: WeatherModel) {
+    init(weather: WeatherModel?) {
         self.weather = weather
     }
     

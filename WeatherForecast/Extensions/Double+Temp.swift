@@ -19,10 +19,10 @@ extension Double {
     }
     
     private func asFahrenhite() -> Int {
-        Int((self + 32) * 9/5)
+        Int((self.asCentigrade() * 9/5) + 32 )
     }
     
     private func asCentigrade() -> Int {
-        Int((self - 32) * 5/9)
+        Int(self - 273.15)
     }
 }
