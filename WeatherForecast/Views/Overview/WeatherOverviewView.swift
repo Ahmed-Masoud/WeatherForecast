@@ -43,6 +43,7 @@ class WeatherOverviewView: UIView {
     }
     
     private func buildFacts(for currentWeather: WeatherVMProtocol?) {
+        infoStack.subviews.forEach({$0.removeFromSuperview()})
         let factsContainers = [
             WeatherDetailsInfoView(),
             WeatherDetailsInfoView(),

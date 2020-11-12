@@ -33,6 +33,10 @@ class WeatherOverviewVC: UIViewController {
         super.viewDidLoad()
         setupBarItems()
         setupBinding()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupLocation()
     }
 
@@ -51,7 +55,8 @@ class WeatherOverviewVC: UIViewController {
     }
     
     @objc private func openSettings() {
-        
+        let settings = SettingsVC.create()
+        self.navigationController?.pushViewController(settings, animated: true)
     }
     
     private func setupBinding() {

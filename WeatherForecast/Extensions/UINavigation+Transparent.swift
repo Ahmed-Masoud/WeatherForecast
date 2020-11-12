@@ -14,5 +14,6 @@ extension UINavigationController {
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.backgroundColor = .clear
         self.navigationBar.isTranslucent = true
+        self.navigationBar.tintColor = .white
     }
 }
