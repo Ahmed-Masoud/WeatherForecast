@@ -8,8 +8,7 @@
 import Foundation
 
 class TemperatureModel: Codable {
-    var day, min, max, night: Double?
-    var eve, morn: Double?
+    var day, min, max, night, eve, morn: Double?
     
     init(day: Double?, min: Double?, max: Double?, night: Double?, eve: Double?, morn: Double?) {
         self.day = day

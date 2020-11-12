@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WeatherOverviewVC.swift
 //  WeatherForecast
 //
 //  Created by Fatema El Zahraa on 11/12/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherOverviewVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

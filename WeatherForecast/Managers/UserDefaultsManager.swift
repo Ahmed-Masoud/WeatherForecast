@@ -8,38 +8,32 @@
 
 import Foundation
 
+enum DegreeType: String {
+    case centigrade = "centigrade"
+    case fahrenheit = "fahrenheit"
+}
+
 class UserDefaultsManager {
     
     //MARK: Singleton
     static let shared = UserDefaultsManager()
     
     private struct UserDefaultsKeys {
-        static let firstTime = "UDKFirstTime"
-        static let didGetOriented = "UDKOrientation"
+        static let degreeType = "UDKDegreeType"
     }
     
     //MARK: Properties
-    var isFirstTime:Bool {
-        set{
-            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.firstTime)
+    var degreeType: DegreeType {
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaultsKeys.degreeType)
         }
-        get{
-            guard UserDefaults.standard.object(forKey: UserDefaultsKeys.firstTime) != nil else {
-                return true
+        get {
+            let rawType = UserDefaults.standard.string(forKey: UserDefaultsKeys.degreeType)
+            guard let safeRawType = rawType, let safeDegreeType = DegreeType(rawValue: safeRawType) else {
+                // Defaults to Fahrenheit
+                return .fahrenheit
             }
-            return UserDefaults.standard.bool(forKey: UserDefaultsKeys.firstTime)
-        }
-    }
-    
-    var didGetOriented:Bool {
-        set{
-            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.didGetOriented)
-        }
-        get{
-            guard UserDefaults.standard.object(forKey: UserDefaultsKeys.didGetOriented) != nil else {
-                return false
-            }
-            return UserDefaults.standard.bool(forKey: UserDefaultsKeys.didGetOriented)
+            return safeDegreeType
         }
     }
     

@@ -18,6 +18,7 @@ struct StoryBoard {
 
 struct Server {
     static let serverBaseURL = "https://api.openweathermap.org/data/2.5"
+    static let imagesBaseURL = "https://openweathermap.org/img/w/"
 }
 
 struct ErrorMessage {
