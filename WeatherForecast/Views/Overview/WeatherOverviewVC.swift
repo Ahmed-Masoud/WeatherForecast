@@ -11,10 +11,20 @@ import CoreLocation
 class WeatherOverviewVC: UIViewController {
     
     //MARK:- Outlets
+    @IBOutlet var weatherOverviewView: WeatherOverviewView!
     
     //MARK:- Properties
     private var viewModel: WeatherOverviewViewModelProtocol?
     private let locationManager = CLLocationManager()
+    private var currentWeather: WeatherVMProtocol? {
+        viewModel?.currentWeather
+    }
+    private var hourlyWeather: [WeatherVMProtocol]? {
+        viewModel?.hourlyWeather
+    }
+    private var dailyWeather: [DailyWeatherVMProtocol]? {
+        viewModel?.dailyWeather
+    }
     
     //MARK:-LifeCycle
     override func viewDidLoad() {
@@ -38,7 +48,7 @@ class WeatherOverviewVC: UIViewController {
     
     private func didFetchData() {
         LoadingSpinnerManager.shared.hide()
-        print(viewModel?.currentWeather?.feelsLike)
+        weatherOverviewView.contentTable.reloadData()
     }
     
     private func didFail(_ error: String) {
@@ -81,5 +91,17 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             print("Fine")
         }
+    }
+}
+
+extension WeatherOverviewVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dailyWeather?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(WeatherTableViewCell.self)", for: indexPath) as? WeatherTableViewCell, let dayWeather = dailyWeather?[indexPath.row] else { return UITableViewCell() }
+        cell.dailyVM = dayWeather
+        return cell
     }
 }

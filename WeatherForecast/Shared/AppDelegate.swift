@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UserDefaultsManager.shared.degreeType = .centigrade
         let HomeVC = WeatherOverviewVC.create(viewModel: WeatherOverviewViewModel())
         window?.rootViewController = HomeVC
         window?.makeKeyAndVisible()

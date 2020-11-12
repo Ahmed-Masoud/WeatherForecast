@@ -7,7 +7,7 @@ target 'WeatherForecast' do
 
   # Pods for WeatherForecast
 pod 'Alamofire'
-
+pod 'Kingfisher'
   target 'WeatherForecastTests' do
     inherit! :search_paths
     # Pods for testing

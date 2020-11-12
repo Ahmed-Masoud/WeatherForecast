@@ -12,12 +12,34 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="WeatherOverviewVC" id="BYZ-38-t0r" customClass="WeatherOverviewVC" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="WeatherOverviewView" customModule="WeatherForecast" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OER-bi-M2B">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="u7J-Fb-QWB"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="OEb-KG-kM3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OER-bi-M2B" secondAttribute="bottom" id="22M-gp-RyK"/>
+                            <constraint firstItem="OER-bi-M2B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="37y-gk-lub"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OER-bi-M2B" secondAttribute="trailing" id="Q4x-ef-aTM"/>
+                            <constraint firstItem="OER-bi-M2B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="os8-lw-SgY"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="contentTable" destination="OER-bi-M2B" id="v9d-6i-fD4"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="weatherOverviewView" destination="8bC-Xf-vdC" id="uK2-RH-9AZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
