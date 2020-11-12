@@ -22,6 +22,7 @@ class LoadingSpinnerManager {
     
     //MARK: Methods
     func show() {
+        if loadingSpinner != nil { return }
         guard let window = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive})
                 .map({$0 as? UIWindowScene})

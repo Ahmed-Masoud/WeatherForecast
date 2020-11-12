@@ -47,8 +47,9 @@ class WeatherOverviewVC: UIViewController {
     }
     
     private func didFetchData() {
-        LoadingSpinnerManager.shared.hide()
+        weatherOverviewView.updateView(with: currentWeather)
         weatherOverviewView.contentTable.reloadData()
+        LoadingSpinnerManager.shared.hide()
     }
     
     private func didFail(_ error: String) {

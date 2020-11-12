@@ -41,6 +41,7 @@ extension WeatherOverviewViewModel: WeatherOverviewViewModelProtocol {
                 self?.currentWeather = WeatherVM(weather: weatherResponse?.current)
                 self?.hourlyWeather = (weatherResponse?.hourly ?? []).map({WeatherVM(weather: $0)})
                 self?.dailyWeather = (weatherResponse?.daily ?? []).map({DailyWeatherVM(weather: $0)})
+                self?.dailyWeather?.removeFirst() // Remove Today from the list
                 self?.didFetchData?()
             case .failure(let error):
                 print(error)

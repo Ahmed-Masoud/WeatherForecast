@@ -11,6 +11,10 @@ class WeatherOverviewView: UIView {
 
     //MARK:- Outlets
     @IBOutlet weak var contentTable: UITableView!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var currentWeatherIcon: UIImageView!
+    @IBOutlet weak var currentWeatherState: UILabel!
+    @IBOutlet weak var infoStack: UIStackView!
     
     //MARK:- Life Cycle
     override func awakeFromNib() {
@@ -20,9 +24,34 @@ class WeatherOverviewView: UIView {
     
     //MARK:- Methods
     private func setupUI() {
+        contentTable.backgroundColor = .clear
         contentTable.rowHeight = UITableView.automaticDimension
         contentTable.estimatedRowHeight = 600
         contentTable.register(WeatherTableViewCell.nib(), forCellReuseIdentifier: "\(WeatherTableViewCell.self)")
+        currentWeatherIcon.kf.indicatorType = .activity
+    }
+    
+    func updateView(with currentWeather: WeatherVMProtocol?) {
+        currentWeatherIcon.kf.setImage(with: URL(string: currentWeather?.details?.icon ?? ""),
+        options : [ .transition(.fade(1)) ])
+        currentTempLabel.text = currentWeather?.temp
+        currentWeatherState.text = currentWeather?.details?.weatherHighlight
+        buildFacts(for: currentWeather)
+    }
+    
+    private func buildFacts(for currentWeather: WeatherVMProtocol?) {
+        let factsContainers = [
+            WeatherDetailsInfoView(),
+            WeatherDetailsInfoView(),
+            WeatherDetailsInfoView(),
+            WeatherDetailsInfoView()
+        ]
+        for (index, container) in factsContainers.enumerated() {
+            let lFact = currentWeather?.facts?[index]
+            let rFact = currentWeather?.facts?[index + 1]
+            container.updateWith(rValue: rFact, lValue: lFact)
+            infoStack.addArrangedSubview(container)
+        }
     }
 
 }

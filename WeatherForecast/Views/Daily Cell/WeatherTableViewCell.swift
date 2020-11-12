@@ -31,6 +31,9 @@ class WeatherTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.kf.indicatorType = .activity
+        self.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
+        self.selectionStyle = .none
     }
 
     //MARK:- Methods
