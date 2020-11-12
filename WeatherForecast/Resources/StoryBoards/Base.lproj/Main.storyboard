@@ -79,16 +79,16 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A6X-Fh-C3W">
-                                            <rect key="frame" x="8" y="11" width="398" height="279"/>
+                                            <rect key="frame" x="16" y="11" width="382" height="279"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="zMG-0l-kHG" secondAttribute="trailing" id="22C-Fv-rCP"/>
-                                        <constraint firstAttribute="trailing" secondItem="A6X-Fh-C3W" secondAttribute="trailing" constant="8" id="Ckz-V5-3dl"/>
+                                        <constraint firstAttribute="trailing" secondItem="A6X-Fh-C3W" secondAttribute="trailing" constant="16" id="Ckz-V5-3dl"/>
                                         <constraint firstAttribute="bottom" secondItem="A6X-Fh-C3W" secondAttribute="bottom" id="GT2-N9-S8b"/>
-                                        <constraint firstItem="A6X-Fh-C3W" firstAttribute="leading" secondItem="JXW-TA-4gO" secondAttribute="leading" constant="8" id="HiF-U0-BdK"/>
+                                        <constraint firstItem="A6X-Fh-C3W" firstAttribute="leading" secondItem="JXW-TA-4gO" secondAttribute="leading" constant="16" id="HiF-U0-BdK"/>
                                         <constraint firstItem="A6X-Fh-C3W" firstAttribute="top" secondItem="zMG-0l-kHG" secondAttribute="bottom" constant="10" id="ZNZ-9a-FMp"/>
                                         <constraint firstItem="zMG-0l-kHG" firstAttribute="top" secondItem="JXW-TA-4gO" secondAttribute="top" id="ZWe-Hv-Slx"/>
                                         <constraint firstItem="zMG-0l-kHG" firstAttribute="leading" secondItem="JXW-TA-4gO" secondAttribute="leading" id="qA3-W6-IiP"/>

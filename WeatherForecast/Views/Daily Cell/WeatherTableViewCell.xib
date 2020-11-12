@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOa-ff-6Um">
-                        <rect key="frame" x="641" y="10" width="66" height="38"/>
+                        <rect key="frame" x="633" y="10" width="66" height="38"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="66" id="hdJ-fe-NJU"/>
                         </constraints>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-Vb-wv5">
-                        <rect key="frame" x="565" y="10" width="66" height="38"/>
+                        <rect key="frame" x="557" y="10" width="66" height="38"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="66" id="UxI-gj-aYB"/>
                         </constraints>
@@ -42,7 +42,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnH-iQ-pGg">
-                        <rect key="frame" x="8" y="10" width="41.5" height="38"/>
+                        <rect key="frame" x="16" y="10" width="41.5" height="38"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -54,11 +54,11 @@
                     <constraint firstItem="3Hp-ji-bZa" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6u1-jb-gip"/>
                     <constraint firstItem="3Hp-ji-bZa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DbR-nr-pR9"/>
                     <constraint firstAttribute="bottom" secondItem="tOa-ff-6Um" secondAttribute="bottom" constant="10" id="ITf-sC-qF7"/>
-                    <constraint firstItem="BnH-iQ-pGg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ita-qf-OaF"/>
+                    <constraint firstItem="BnH-iQ-pGg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ita-qf-OaF"/>
                     <constraint firstAttribute="bottom" secondItem="Rnc-Vb-wv5" secondAttribute="bottom" constant="10" id="Nys-7J-Rwd"/>
                     <constraint firstItem="tOa-ff-6Um" firstAttribute="leading" secondItem="Rnc-Vb-wv5" secondAttribute="trailing" constant="10" id="TCt-Jb-78B"/>
                     <constraint firstItem="Rnc-Vb-wv5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Z6A-oe-cfE"/>
-                    <constraint firstAttribute="trailing" secondItem="tOa-ff-6Um" secondAttribute="trailing" constant="8" id="r3p-4G-nHf"/>
+                    <constraint firstAttribute="trailing" secondItem="tOa-ff-6Um" secondAttribute="trailing" constant="16" id="r3p-4G-nHf"/>
                     <constraint firstItem="BnH-iQ-pGg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sYo-Q0-jru"/>
                 </constraints>
             </tableViewCellContentView>
