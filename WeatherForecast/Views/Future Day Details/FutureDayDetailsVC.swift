@@ -10,36 +10,22 @@ import UIKit
 class FutureDayDetailsVC: UIViewController {
 
     //MARK:- Outlets
-    @IBOutlet weak var detailsStack: UIStackView!
+    @IBOutlet var futureDayDetailsView: FutureDayDetailsView!
     
     //MARK:- Properties
-    private var facts: [((String, String?),(String, String?))]?
+    private var dayWeather: DailyWeatherVMProtocol?
     
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFacts()
+        futureDayDetailsView.updateView(with: dayWeather)
     }
     
     //MARK:- Methods
-    class func create(facts: [((String, String?),(String, String?))]?) -> FutureDayDetailsVC {
+    class func create(dayWeather: DailyWeatherVMProtocol?) -> FutureDayDetailsVC {
         let currentVC: FutureDayDetailsVC = UIViewController.create(storyboardName: StoryBoard.main, identifier: "\(FutureDayDetailsVC.self)")
-        currentVC.facts = facts
+        currentVC.dayWeather = dayWeather
         return currentVC
-    }
-    
-    private func setupFacts() {
-        let factsContainers = [
-            WeatherDetailsInfoView(),
-            WeatherDetailsInfoView(),
-            WeatherDetailsInfoView(),
-            WeatherDetailsInfoView()
-        ]
-        for (index, container) in factsContainers.enumerated() {
-            let fact = facts?[index]
-            container.updateWith(fact: fact)
-            detailsStack.addArrangedSubview(container)
-        }
     }
     
 }

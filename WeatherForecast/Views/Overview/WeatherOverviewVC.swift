@@ -127,7 +127,7 @@ extension WeatherOverviewVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let dayWeather = dailyWeather?[indexPath.row] else { return }
-        let detailsVC = FutureDayDetailsVC.create(facts: dayWeather.facts)
+        let detailsVC = FutureDayDetailsVC.create(dayWeather: dayWeather)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
