@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Utilities.setUpLocalNotification(hour: 10, minute: 30)
         let homeVC = WeatherOverviewVC.create(viewModel: WeatherOverviewViewModel())
         let homeNav = UINavigationController(rootViewController: homeVC)
         homeNav.makeTransparent()
