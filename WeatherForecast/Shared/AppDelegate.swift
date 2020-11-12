@@ -14,12 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaultsManager.shared.degreeType = .centigrade
-        let HomeVC = WeatherOverviewVC.create(viewModel: WeatherOverviewViewModel())
-        window?.rootViewController = HomeVC
+        let homeVC = WeatherOverviewVC.create(viewModel: WeatherOverviewViewModel())
+        let homeNav = UINavigationController(rootViewController: homeVC)
+        homeNav.makeTransparent()
+        window?.rootViewController = homeNav
         window?.makeKeyAndVisible()
         return true
     }
-
-
+    
+    
 }
 

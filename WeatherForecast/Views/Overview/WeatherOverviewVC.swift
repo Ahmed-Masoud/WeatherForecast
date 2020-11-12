@@ -31,6 +31,7 @@ class WeatherOverviewVC: UIViewController {
     //MARK:-LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBarItems()
         setupBinding()
         setupLocation()
     }
@@ -41,6 +42,16 @@ class WeatherOverviewVC: UIViewController {
         viewModel.setDependencies(provider: WeatherProvider())
         currentVC.viewModel = viewModel
         return currentVC
+    }
+    
+    private func setupBarItems() {
+        let button = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(openSettings))
+        button.tintColor = .white
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func openSettings() {
+        
     }
     
     private func setupBinding() {
