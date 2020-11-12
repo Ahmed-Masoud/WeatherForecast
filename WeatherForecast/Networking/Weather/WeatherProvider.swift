@@ -7,11 +7,11 @@
 
 import Foundation
 protocol WeatherProviderProtocol: class {
-    func getForecast(lat: Double, lng: Double, completion: @escaping (Result<WeatherResponse?, NSError>) -> Void)
+    func getForecast(lat: Double, lng: Double, completion: @escaping (Result<WeatherForecastResponse?, NSError>) -> Void)
 }
 
 class WeatherProvider: BaseAPI<WeatherNetworking>, WeatherProviderProtocol {
-    func getForecast(lat: Double, lng: Double, completion: @escaping (Result<WeatherResponse?, NSError>) -> Void) {
-        self.fetchData(target: .getForecast(lat: lat, lng: lng), responseClass: WeatherResponse.self, completion: completion)
+    func getForecast(lat: Double, lng: Double, completion: @escaping (Result<WeatherForecastResponse?, NSError>) -> Void) {
+        self.fetchData(target: .getForecast(lat: lat, lng: lng), responseClass: WeatherForecastResponse.self, completion: completion)
     }
 }

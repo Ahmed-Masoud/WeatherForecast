@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         provider.getForecast(lat: 37.33233141, lng: -122.0312186) { (result) in
             switch result {
             case .success(let weather):
-                print(weather?.currently.summary)
+                print(weather)
             case .failure(let error):
                 print(error)
             }

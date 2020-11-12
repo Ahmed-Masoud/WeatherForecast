@@ -19,8 +19,8 @@ extension WeatherNetworking: TargetType {
     
     var path: String {
         switch self {
-        case let .getForecast(lat, lng):
-            return String(format: Endpoint.getForecast, App.WEATHER_API_KEY, "\(lat)", "\(lng)")
+        case .getForecast:
+            return Endpoint.getForecast
         }
     }
     
@@ -33,8 +33,13 @@ extension WeatherNetworking: TargetType {
     
     var task: Task {
         switch self {
-        case .getForecast:
-            return .requestParameters(parameters: ["exclude" : "[flags,minutely]"], encoding: URLEncoding.queryString)
+        case let .getForecast(lat, lon):
+            let params: [String: Any] = [
+                "lat": lat,
+                "lon": lon,
+                "appid": App.WEATHER_API_KEY
+            ]
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
     }
     

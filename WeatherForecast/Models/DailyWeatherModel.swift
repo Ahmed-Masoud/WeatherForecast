@@ -6,52 +6,45 @@
 //
 
 import Foundation
-
-
-class DailyWeather: Codable {
-    let summary: String
-    let icon: String
-    let data: [DailyWeatherEntry]
-}
-
-class DailyWeatherEntry: Codable {
-    let time: Int
-    let summary: String
-    let icon: String
-    let sunriseTime: Int
-    let sunsetTime: Int
-    let moonPhase: Double
-    let precipIntensity: Float
-    let precipIntensityMax: Float
-    let precipIntensityMaxTime: Int
-    let precipProbability: Double
-    let precipType: String?
-    let temperatureHigh: Double
-    let temperatureHighTime: Int
-    let temperatureLow: Double
-    let temperatureLowTime: Int
-    let apparentTemperatureHigh: Double
-    let apparentTemperatureHighTime: Int
-    let apparentTemperatureLow: Double
-    let apparentTemperatureLowTime: Int
-    let dewPoint: Double
-    let humidity: Double
-    let pressure: Double
-    let windSpeed: Double
-    let windGust: Double
-    let windGustTime: Int
-    let windBearing: Int
-    let cloudCover: Double
-    let uvIndex: Int
-    let uvIndexTime: Int
-    let visibility: Double
-    let ozone: Double
-    let temperatureMin: Double
-    let temperatureMinTime: Int
-    let temperatureMax: Double
-    let temperatureMaxTime: Int
-    let apparentTemperatureMin: Double
-    let apparentTemperatureMinTime: Int
-    let apparentTemperatureMax: Double
-    let apparentTemperatureMaxTime: Int
+class DailyWeatherModel: Codable {
+    var time: Int?
+    var sunrise: Int?
+    var sunset: Int?
+    var temp: TemperatureModel?
+    var feelsLike: TemperatureModel?
+    var pressure: Int?
+    var humidity: Int?
+    var dewPoint: Double?
+    var windSpeed: Double?
+    var windDeg: Int?
+    var details: [WeatherDetailsModel]?
+    var clouds: Int?
+    var uvi: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case sunrise, sunset, clouds, uvi, temp
+        case time = "dt"
+        case feelsLike = "feels_like"
+        case pressure, humidity
+        case dewPoint = "dew_point"
+        case windSpeed = "wind_speed"
+        case windDeg = "wind_deg"
+        case details = "weather"
+    }
+    
+    init(time: Int?, sunrise: Int?, sunset: Int?, temp: TemperatureModel?, feelsLike: TemperatureModel?, pressure: Int?, humidity: Int?, dewPoint: Double?, windSpeed: Double?, windDeg: Int?, details: [WeatherDetailsModel]?, clouds: Int?, uvi: Double?) {
+        self.time = time
+        self.sunrise = sunrise
+        self.sunset = sunset
+        self.temp = temp
+        self.feelsLike = feelsLike
+        self.pressure = pressure
+        self.humidity = humidity
+        self.dewPoint = dewPoint
+        self.windSpeed = windSpeed
+        self.windDeg = windDeg
+        self.details = details
+        self.clouds = clouds
+        self.uvi = uvi
+    }
 }

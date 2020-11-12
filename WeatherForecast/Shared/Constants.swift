@@ -9,7 +9,7 @@ import Foundation
 
 
 struct App {
-    static let WEATHER_API_KEY = "ddcc4ebb2a7c9930b90d9e59bda0ba7a"
+    static let WEATHER_API_KEY = "4148e5153d6d6a0444a554646c392a8a"
 }
 
 struct StoryBoard {
@@ -17,7 +17,7 @@ struct StoryBoard {
 }
 
 struct Server {
-    static let serverBaseURL = "https://api.darksky.net"
+    static let serverBaseURL = "https://api.openweathermap.org/data/2.5"
 }
 
 struct ErrorMessage {
@@ -25,5 +25,5 @@ struct ErrorMessage {
 }
 
 struct Endpoint {
-    static let getForecast = "/forecast/%@/%@,%@"
+    static let getForecast = "/onecall"
 }
