@@ -8,24 +8,46 @@
 import UIKit
 
 class WeatherOverviewVC: UIViewController {
+    
+    //MARK:- Outlets
+    
+    //MARK:- Properties
+    private var viewModel: WeatherOverviewViewModelProtocol?
+    
+    //MARK:-LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBinding()
+        viewModel?.loadDate(lat: 37.33233141, lng: -122.0312186)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let provider = WeatherProvider()
-        provider.getForecast(lat: 37.33233141, lng: -122.0312186) { (result) in
-            switch result {
-            case .success(let weather):
-                print(weather)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        LoadingSpinnerManager.shared.show()
     }
 
+    //MARK:- Methods
+    class func create(viewModel: WeatherOverviewViewModelProtocol) -> WeatherOverviewVC {
+        let currentVC: WeatherOverviewVC = UIViewController.create(storyboardName: StoryBoard.main, identifier: "\(WeatherOverviewVC.self)")
+        viewModel.setDependencies(provider: WeatherProvider())
+        currentVC.viewModel = viewModel
+        return currentVC
+    }
+    
+    private func setupBinding() {
+        viewModel?.didFetchData = didFetchData
+        viewModel?.didFail = didFail
+    }
+    
+    private func didFetchData() {
+        LoadingSpinnerManager.shared.hide()
+    }
+    
+    private func didFail(_ error: String) {
+        LoadingSpinnerManager.shared.hide()
+        print(error)
+    }
 
 }
 
