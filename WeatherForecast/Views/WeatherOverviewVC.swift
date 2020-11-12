@@ -22,11 +22,6 @@ class WeatherOverviewVC: UIViewController {
         setupBinding()
         setupLocation()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        LoadingSpinnerManager.shared.show()
-    }
 
     //MARK:- Methods
     class func create(viewModel: WeatherOverviewViewModelProtocol) -> WeatherOverviewVC {
@@ -64,7 +59,27 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
         if !locations.isEmpty {
             guard let currentLocation = locations.first else { return }
             locationManager.stopUpdatingLocation()
+            LoadingSpinnerManager.shared.show()
             viewModel?.loadDate(lat: currentLocation.coordinate.latitude, lng: currentLocation.coordinate.longitude)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            print("notDetermined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            let alert = UIAlertController(title: "Location Access Denied", message: "Accessing your current location is mandatory for the app to operate", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        case .authorizedAlways:
+            print("Is not requested")
+        case .authorizedWhenInUse:
+            print("Fine")
         }
     }
 }
