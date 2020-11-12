@@ -31,11 +31,11 @@ class WeatherDetailsInfoView: UIView {
         contentView.frame = self.bounds
     }
     
-    func updateWith(rValue: (String, String?)?, lValue: (String, String?)?) {
-        lKeyLabel.text = lValue?.0 ?? ""
-        lValueLabel.text = lValue?.1 ?? ""
+    func updateWith(fact: ((String, String?),(String, String?))?) {
+        lKeyLabel.text = fact?.0.0
+        lValueLabel.text = fact?.0.1
         
-        rKeyLabel.text = rValue?.0 ?? ""
-        rValueLabel.text = rValue?.1 ?? ""
+        rKeyLabel.text = fact?.1.0
+        rValueLabel.text = fact?.1.1
     }
 }

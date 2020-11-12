@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue sky" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-CO-rsB">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nighttime_clear" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-CO-rsB">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OER-bi-M2B">
@@ -171,9 +171,48 @@
             </objects>
             <point key="canvasLocation" x="100.00000000000001" y="9.375"/>
         </scene>
+        <!--Future Day DetailsVC-->
+        <scene sceneID="tmA-kd-Fsk">
+            <objects>
+                <viewController storyboardIdentifier="FutureDayDetailsVC" id="yRX-0T-o4O" customClass="FutureDayDetailsVC" customModule="WeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v4m-Ig-Ugv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nighttime_clear" translatesAutoresizingMaskIntoConstraints="NO" id="I4k-0n-mPG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G1l-dv-ML1">
+                                <rect key="frame" x="10" y="54" width="394" height="279"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="279" id="lLc-dO-HPM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o6T-tF-ilz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G1l-dv-ML1" firstAttribute="top" secondItem="o6T-tF-ilz" secondAttribute="top" constant="10" id="Qq4-wt-lVR"/>
+                            <constraint firstItem="o6T-tF-ilz" firstAttribute="trailing" secondItem="I4k-0n-mPG" secondAttribute="trailing" id="XTc-tA-QNr"/>
+                            <constraint firstItem="o6T-tF-ilz" firstAttribute="trailing" secondItem="G1l-dv-ML1" secondAttribute="trailing" constant="10" id="jOI-P4-K6z"/>
+                            <constraint firstItem="G1l-dv-ML1" firstAttribute="leading" secondItem="o6T-tF-ilz" secondAttribute="leading" constant="10" id="lb5-vJ-o0W"/>
+                            <constraint firstAttribute="bottom" secondItem="I4k-0n-mPG" secondAttribute="bottom" id="o1F-UZ-QqQ"/>
+                            <constraint firstItem="I4k-0n-mPG" firstAttribute="top" secondItem="v4m-Ig-Ugv" secondAttribute="top" id="rvV-ok-9pT"/>
+                            <constraint firstItem="I4k-0n-mPG" firstAttribute="leading" secondItem="o6T-tF-ilz" secondAttribute="leading" id="wpu-he-E4Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailsStack" destination="G1l-dv-ML1" id="KEa-0c-fcG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZ4-rA-RrU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.04347826086962" y="8.7053571428571423"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="blue sky" width="1080" height="1920"/>
+        <image name="Nighttime_clear" width="1080" height="1920"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -50,9 +50,7 @@ class WeatherOverviewView: UIView {
             WeatherDetailsInfoView()
         ]
         for (index, container) in factsContainers.enumerated() {
-            let lFact = currentWeather?.facts?[index]
-            let rFact = currentWeather?.facts?[index + 1]
-            container.updateWith(rValue: rFact, lValue: lFact)
+            container.updateWith(fact: currentWeather?.facts?[index])
             infoStack.addArrangedSubview(container)
         }
     }

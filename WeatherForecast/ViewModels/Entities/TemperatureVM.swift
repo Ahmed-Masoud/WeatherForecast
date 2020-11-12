@@ -14,6 +14,7 @@ protocol TemperatureVMProtocol {
     var night: String? { get }
     var eve: String? { get }
     var morn: String? { get }
+    var avg: String? { get }
 }
 
 class TemperatureVM: TemperatureVMProtocol {
@@ -46,6 +47,13 @@ class TemperatureVM: TemperatureVMProtocol {
     
     var morn: String? {
         temperature?.morn?.asTemp()
+    }
+    
+    var avg: String? {
+        let evening = temperature?.eve ?? 0
+        let morning = temperature?.morn ?? 0
+        let average = (evening + morning) / 2
+        return average.asTemp()
     }
     
 }

@@ -17,7 +17,8 @@ protocol DailyWeatherVMProtocol {
     var humidity: String? { get }
     var windSpeed: String? { get }
     var details: WeatherDetailsVMProtocol? { get }
-    var uvIndex: Double? { get }
+    var uvIndex: String? { get }
+    var facts: [((String, String?),(String, String?))]? { get }
 }
 
 class DailyWeatherVM: DailyWeatherVMProtocol {
@@ -67,7 +68,16 @@ class DailyWeatherVM: DailyWeatherVMProtocol {
         WeatherDetailsVM(weatherDetails: weather?.details?.first)
     }
     
-    var uvIndex: Double? {
-        weather?.uvi
+    var uvIndex: String? {
+        String(weather?.uvi ?? 0)
+    }
+    
+    var facts: [((String, String?),(String, String?))]? {
+        [
+            (("SUNRISE",sunrise), ("SUNSET",sunset)),
+            (("HUMIDITY",humidity), ("WIND",windSpeed)),
+            (("FEELS LIKE",feelsLike?.avg), ("PRESSURE",pressure)),
+            (("VISIBILITY","-"), ("UV INDEX",uvIndex))
+        ]
     }
 }

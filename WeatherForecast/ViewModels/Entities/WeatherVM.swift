@@ -20,7 +20,7 @@ protocol WeatherVMProtocol {
     var details: WeatherDetailsVMProtocol? { get }
     var uvIndex: String? { get }
     var visibility: String? { get }
-    var facts: [(String, String?)]? { get }
+    var facts: [((String, String?),(String, String?))]? { get }
 }
 
 class WeatherVM: WeatherVMProtocol {
@@ -80,19 +80,15 @@ class WeatherVM: WeatherVMProtocol {
     }
     
     var visibility: String? {
-        "\(Int(weather?.visibility ?? 0 / 1000)) km"
+        "\(Int((weather?.visibility ?? 0) / 1000)) km"
     }
     
-    var facts: [(String, String?)]? {
+    var facts: [((String, String?),(String, String?))]? {
         [
-            ("SUNRISE",sunrise),
-            ("SUNSET",sunset),
-            ("HUMIDITY",humidity),
-            ("WIND",windSpeed),
-            ("FEELS LIKE",feelsLike),
-            ("PRESSURE",pressure),
-            ("VISIBILITY",visibility),
-            ("UV INDEX",uvIndex)
+            (("SUNRISE",sunrise), ("SUNSET",sunset)),
+            (("HUMIDITY",humidity), ("WIND",windSpeed)),
+            (("FEELS LIKE",feelsLike), ("PRESSURE",pressure)),
+            (("VISIBILITY",visibility), ("UV INDEX",uvIndex))
         ]
     }
 }
