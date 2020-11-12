@@ -16,6 +16,8 @@ class WeatherOverviewVC: UIViewController {
     //MARK:- Properties
     private var viewModel: WeatherOverviewViewModelProtocol?
     private let locationManager = CLLocationManager()
+    private let collectionCellHeight: CGFloat = 100
+    private let collectionCellWidth: CGFloat = 160
     private var currentWeather: WeatherVMProtocol? {
         viewModel?.currentWeather
     }
@@ -49,6 +51,7 @@ class WeatherOverviewVC: UIViewController {
     private func didFetchData() {
         weatherOverviewView.updateView(with: currentWeather)
         weatherOverviewView.contentTable.reloadData()
+        weatherOverviewView.hoursCollection.reloadData()
         LoadingSpinnerManager.shared.hide()
     }
     
@@ -105,4 +108,21 @@ extension WeatherOverviewVC: UITableViewDelegate, UITableViewDataSource {
         cell.dailyVM = dayWeather
         return cell
     }
+}
+
+extension WeatherOverviewVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return hourlyWeather?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(HourlyCollectionViewCell.self)", for: indexPath) as? HourlyCollectionViewCell, let hourlyWeather = hourlyWeather?[indexPath.row] else { return UICollectionViewCell() }
+        cell.hourlyVM = hourlyWeather
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionCellWidth, height: collectionCellHeight)
+    }
+    
 }

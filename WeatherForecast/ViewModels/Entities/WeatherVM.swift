@@ -9,6 +9,7 @@ import Foundation
 
 protocol WeatherVMProtocol {
     var dayDate: String? { get }
+    var timeOfDay: String? { get }
     var sunrise: String? { get }
     var sunset: String? { get }
     var temp: String? { get }
@@ -33,6 +34,11 @@ class WeatherVM: WeatherVMProtocol {
     var dayDate: String? {
         let date = Date(timeIntervalSince1970: Double(weather?.time ?? 0))
         return date.dayOfWeek()
+    }
+    
+    var timeOfDay: String? {
+        let date = Date(timeIntervalSince1970: Double(weather?.time ?? 0))
+        return date.timeOfDay()
     }
     
     var sunrise: String? {

@@ -15,6 +15,7 @@ class WeatherOverviewView: UIView {
     @IBOutlet weak var currentWeatherIcon: UIImageView!
     @IBOutlet weak var currentWeatherState: UILabel!
     @IBOutlet weak var infoStack: UIStackView!
+    @IBOutlet weak var hoursCollection: UICollectionView!
     
     //MARK:- Life Cycle
     override func awakeFromNib() {
@@ -28,6 +29,8 @@ class WeatherOverviewView: UIView {
         contentTable.rowHeight = UITableView.automaticDimension
         contentTable.estimatedRowHeight = 600
         contentTable.register(WeatherTableViewCell.nib(), forCellReuseIdentifier: "\(WeatherTableViewCell.self)")
+        hoursCollection.register(HourlyCollectionViewCell.nib(), forCellWithReuseIdentifier: "\(HourlyCollectionViewCell.self)")
+        hoursCollection.backgroundColor = .clear
         currentWeatherIcon.kf.indicatorType = .activity
     }
     
