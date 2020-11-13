@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.fetchWeather",
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: App.BACKGROUND_TASK_ID,
                                         using: nil) { (task) in
             self.handleAppRefreshTask(task: task as! BGAppRefreshTask)
         }
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func scheduleBackgroundWeatherFetch() {
-        let weatherFetchTask = BGAppRefreshTaskRequest(identifier: "com.fetchWeather")
+        let weatherFetchTask = BGAppRefreshTaskRequest(identifier: App.BACKGROUND_TASK_ID)
         weatherFetchTask.earliestBeginDate = Date(timeIntervalSinceNow: 60)
         do {
             try BGTaskScheduler.shared.submit(weatherFetchTask)

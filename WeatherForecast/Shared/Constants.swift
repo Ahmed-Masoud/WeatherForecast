@@ -16,6 +16,7 @@ struct App {
     #endif
     // should have diffrent keys
     static let WEATHER_API_KEY = App.isProduction ? "4148e5153d6d6a0444a554646c392a8a" : "4148e5153d6d6a0444a554646c392a8a"
+    static let BACKGROUND_TASK_ID = "com.fetchWeather"
 }
 
 struct StoryBoard {
