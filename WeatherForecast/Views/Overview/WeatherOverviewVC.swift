@@ -33,6 +33,7 @@ class WeatherOverviewVC: UIViewController {
         super.viewDidLoad()
         setupBarItems()
         setupBinding()
+        loadLastSavedData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +47,12 @@ class WeatherOverviewVC: UIViewController {
         viewModel.setDependencies(provider: WeatherProvider())
         currentVC.viewModel = viewModel
         return currentVC
+    }
+    
+    private func loadLastSavedData() {
+        weatherOverviewView.updateView(with: currentWeather)
+        weatherOverviewView.contentTable.reloadData()
+        weatherOverviewView.hoursCollection.reloadData()
     }
     
     private func setupBarItems() {
@@ -89,7 +96,7 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
         if !locations.isEmpty {
             guard let currentLocation = locations.first else { return }
             locationManager.stopUpdatingLocation()
-            LoadingSpinnerManager.shared.show()
+            if currentWeather == nil {LoadingSpinnerManager.shared.show()}
             viewModel?.loadDate(lat: currentLocation.coordinate.latitude, lng: currentLocation.coordinate.longitude)
         }
     }
@@ -110,6 +117,8 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
             print("Is not requested")
         case .authorizedWhenInUse:
             print("Fine")
+        @unknown default:
+            print("Unkown Value")
         }
     }
 }

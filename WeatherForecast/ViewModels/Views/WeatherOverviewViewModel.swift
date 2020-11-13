@@ -32,6 +32,9 @@ extension WeatherOverviewViewModel: WeatherOverviewViewModelProtocol {
     
     func setDependencies(provider: WeatherProviderProtocol) {
         self.provider = provider
+        self.currentWeather = WeatherVM(weather: UserDefaultsManager.shared.currentWeather)
+        self.hourlyWeather = UserDefaultsManager.shared.hourlyWeather?.map({WeatherVM(weather: $0)})
+        self.dailyWeather = UserDefaultsManager.shared.dailyWeather?.map({DailyWeatherVM(weather: $0)})
     }
     
     func loadDate(lat: Double, lng: Double) {
@@ -40,9 +43,13 @@ extension WeatherOverviewViewModel: WeatherOverviewViewModelProtocol {
             case .success(let weatherResponse):
                 self?.currentWeather = WeatherVM(weather: weatherResponse?.current)
                 self?.hourlyWeather = (weatherResponse?.hourly ?? []).map({WeatherVM(weather: $0)})
-                self?.dailyWeather = (weatherResponse?.daily ?? []).map({DailyWeatherVM(weather: $0)})
-                self?.dailyWeather?.removeFirst() // Remove Today from the list
+                var dailyWeather = weatherResponse?.daily
+                dailyWeather?.removeFirst() // Remove Today from the list
+                self?.dailyWeather = (dailyWeather ?? []).map({DailyWeatherVM(weather: $0)})
                 self?.didFetchData?()
+                UserDefaultsManager.shared.currentWeather = weatherResponse?.current
+                UserDefaultsManager.shared.hourlyWeather = weatherResponse?.hourly
+                UserDefaultsManager.shared.dailyWeather = dailyWeather
             case .failure(let error):
                 print(error)
                 self?.didFail?(ErrorMessage.genericErrorMessage)
