@@ -118,7 +118,7 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
         case .restricted:
             print("restricted")
         case .denied:
-            let alert = UIAlertController(title: "Location Access Denied", message: "Accessing your current location is mandatory for the app to operate", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Location Access Denied", message: "Accessing your current location is mandatory for the app to reload data you will be viewing last loaded data", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }))

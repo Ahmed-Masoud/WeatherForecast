@@ -50,9 +50,9 @@ class TemperatureVM: TemperatureVMProtocol {
     }
     
     var avg: String? {
-        let evening = temperature?.eve ?? 0
+        let night = temperature?.night ?? 0
         let morning = temperature?.morn ?? 0
-        let average = (evening + morning) / 2
+        let average = (night + morning) / 2
         return average.asTemp()
     }
     
