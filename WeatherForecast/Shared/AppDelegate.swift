@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleAppRefreshTask(task: BGAppRefreshTask) {
-        // to test this you need to run on a real device and pause program execution the type this command in console 'e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.fetchWeather"]' then resume the running
+        // to test this you need to run on a real device and pause program execution then type this command in console 'e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.fetchWeather"]' then resume the running
         NotificationCenter.default.post(name: .shouldUpdateWeather, object: self)
         task.setTaskCompleted(success: true)
         scheduleBackgroundWeatherFetch()
