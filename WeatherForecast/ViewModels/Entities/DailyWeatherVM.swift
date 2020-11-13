@@ -7,18 +7,21 @@
 
 import Foundation
 
-protocol DailyWeatherVMProtocol {
+protocol BaseWeatherVMProtocol {
     var dayDate: String? { get }
     var sunrise: String? { get }
     var sunset: String? { get }
-    var temp: TemperatureVMProtocol? { get }
-    var feelsLike: TemperatureVMProtocol? { get }
     var pressure: String? { get }
     var humidity: String? { get }
     var windSpeed: String? { get }
     var details: WeatherDetailsVMProtocol? { get }
     var uvIndex: String? { get }
     var facts: [((String, String?),(String, String?))]? { get }
+}
+
+protocol DailyWeatherVMProtocol: BaseWeatherVMProtocol {
+    var temp: TemperatureVMProtocol? { get }
+    var feelsLike: TemperatureVMProtocol? { get }
 }
 
 class DailyWeatherVM: DailyWeatherVMProtocol {
