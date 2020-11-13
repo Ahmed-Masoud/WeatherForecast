@@ -44,6 +44,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Please allow location to see local weather.</string>
+	<string>Please allow location to see local weather updates.</string>
 </dict>
 </plist>
