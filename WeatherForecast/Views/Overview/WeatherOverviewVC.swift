@@ -18,6 +18,7 @@ class WeatherOverviewVC: UIViewController {
     private let locationManager = CLLocationManager()
     private let collectionCellHeight: CGFloat = 100
     private let collectionCellWidth: CGFloat = 160
+    private var currentLocation: CLLocation?
     private var currentWeather: WeatherVMProtocol? {
         viewModel?.currentWeather
     }
@@ -34,6 +35,7 @@ class WeatherOverviewVC: UIViewController {
         setupBarItems()
         setupBinding()
         loadLastSavedData()
+        registerForNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +49,13 @@ class WeatherOverviewVC: UIViewController {
         viewModel.setDependencies(provider: WeatherProvider())
         currentVC.viewModel = viewModel
         return currentVC
+    }
+    
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(forName: .shouldUpdateWeather, object: nil, queue: nil) { [ weak self ] (notification) in
+            guard let lat = self?.currentLocation?.coordinate.latitude, let lon = self?.currentLocation?.coordinate.longitude else { return }
+            self?.viewModel?.loadDate(lat: lat, lng: lon)
+          }
     }
     
     private func loadLastSavedData() {
@@ -95,6 +104,7 @@ extension WeatherOverviewVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !locations.isEmpty {
             guard let currentLocation = locations.first else { return }
+            self.currentLocation = currentLocation
             locationManager.stopUpdatingLocation()
             if currentWeather == nil {LoadingSpinnerManager.shared.show()}
             viewModel?.loadDate(lat: currentLocation.coordinate.latitude, lng: currentLocation.coordinate.longitude)

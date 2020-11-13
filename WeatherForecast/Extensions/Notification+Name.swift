@@ -8,8 +8,5 @@
 
 import Foundation
 extension Notification.Name {
-    static let didChangeConnection = Notification.Name("DidChangeConnection")
-    static let apiConnectionFailure = Notification.Name("ApiConnectionFailure")
-    static let dynamicLinkResponse = Notification.Name("DynamicLinkResponse")
-    static let didChangeUserInfo = Notification.Name("DidChangeUserInfo")
+    static let shouldUpdateWeather = Notification.Name("ShouldUpdateWeather")
 }
