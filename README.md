@@ -3,6 +3,7 @@
 This app simply hows the current weather based on your current location. Built on openWeatherMap api
 
 ## Demo
+See the app in action
 ![Alt Text](https://media.giphy.com/media/C18O4GRDa5HaB6LdNp/giphy.gif)
 
 # Core Features!

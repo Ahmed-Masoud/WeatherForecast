@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class LoadingSpinnerManager {
-    //MARK: Properties
     
+    //MARK: Properties
     private var loadingSpinner: UIActivityIndicatorView?
     private var containerView: UIView?
     
