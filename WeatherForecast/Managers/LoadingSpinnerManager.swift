@@ -1,9 +1,8 @@
 //
 //  LoadingSpinnerManager.swift
-//  VitalCheckUp-IOS
+//  WeatherForecast
 //
-//  Created by Ahmed masoud on 11/6/19.
-//  Copyright © 2019 Ahmed Masoud. All rights reserved.
+//  Created by Ahmed Masoud on 11/12/20.
 //
 
 import Foundation

@@ -1,9 +1,8 @@
 //
 //  TargetType.swift
-//  NearBy-IOS
+//  WeatherForecast
 //
-//  Created by Ahmed masoud on 7/17/20.
-//  Copyright © 2020 Ahmed Masoud. All rights reserved.
+//  Created by Ahmed Masoud on 11/12/20.
 //
 
 import Foundation

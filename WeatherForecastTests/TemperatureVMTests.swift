@@ -2,7 +2,7 @@
 //  TemperatureVMTests.swift
 //  WeatherForecastTests
 //
-//  Created by Fatema El Zahraa on 11/13/20.
+//  Created by Ahmed Masoud on 11/13/20.
 //
 
 import XCTest

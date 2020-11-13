@@ -1,9 +1,8 @@
 //
 //  Notification+Name.swift
-//  VitalCheckUp-IOS
+//  WeatherForecast
 //
-//  Created by Ahmed Masoud on 1/19/20.
-//  Copyright © 2020 Ahmed Masoud. All rights reserved.
+//  Created by Ahmed Masoud on 11/12/20.
 //
 
 import Foundation
