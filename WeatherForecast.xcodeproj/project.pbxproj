@@ -57,6 +57,7 @@
 		8B3B4950255EAA7C008AA524 /* TemperatureVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B494F255EAA7C008AA524 /* TemperatureVMTests.swift */; };
 		8B3B4989255F883C008AA524 /* UIVIewController+StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B4988255F883C008AA524 /* UIVIewController+StoryBoard.swift */; };
 		8B3B498A255F883C008AA524 /* UIVIewController+StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B4988255F883C008AA524 /* UIVIewController+StoryBoard.swift */; };
+		8B3B499D255F8DE8008AA524 /* UIVIewController+StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3B4988255F883C008AA524 /* UIVIewController+StoryBoard.swift */; };
 		8B3C65B1255D16E0005B498B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C65B0255D16E0005B498B /* AppDelegate.swift */; };
 		8B3C65B5255D16E0005B498B /* WeatherOverviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C65B4255D16E0005B498B /* WeatherOverviewVC.swift */; };
 		8B3C65B8255D16E0005B498B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3C65B6255D16E0005B498B /* Main.storyboard */; };
@@ -826,6 +827,7 @@
 				8BD65164255DA47600AA5EB3 /* SettingsVC.swift in Sources */,
 				8BD65130255D931400AA5EB3 /* UINavigation+Transparent.swift in Sources */,
 				8BD65137255D971400AA5EB3 /* FutureDayDetailsVC.swift in Sources */,
+				8B3B499D255F8DE8008AA524 /* UIVIewController+StoryBoard.swift in Sources */,
 				8B3B4940255EA0EF008AA524 /* WeatherVMTests.swift in Sources */,
 				8B3C672A255D2D1A005B498B /* WeatherDetailsModel.swift in Sources */,
 				8B3C6723255D2CE4005B498B /* DailyWeatherModel.swift in Sources */,
